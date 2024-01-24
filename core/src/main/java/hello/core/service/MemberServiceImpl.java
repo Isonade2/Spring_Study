@@ -1,7 +1,8 @@
-package hello.core.member;
+package hello.core.service;
 
 import hello.core.member.Member;
-import hello.core.member.MemberService;
+import hello.core.repository.MemberRepository;
+import hello.core.repository.MemoryMemberRepository;
 
 public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository = new MemoryMemberRepository();
