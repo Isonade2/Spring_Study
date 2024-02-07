@@ -7,6 +7,7 @@ import hello.core.service.MemberService;
 import hello.core.service.MemberServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.assertj.core.api.Assertions.*;
@@ -15,7 +16,7 @@ public class AutoAppConfigTest {
 
     @Test
     void basicScan(){
-        AnnotationConfigApplicationContext ac
+        ApplicationContext ac
                 = new AnnotationConfigApplicationContext(AutoAppConfig.class);
         MemberService memberService = ac.getBean(MemberService.class);
 
