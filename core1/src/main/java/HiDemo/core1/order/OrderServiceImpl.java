@@ -6,12 +6,20 @@ import HiDemo.core1.discount.RateDiscountPolicy;
 import HiDemo.core1.member.Member;
 import HiDemo.core1.member.MemberRepository;
 import HiDemo.core1.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+
+
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository,@Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
@@ -22,5 +30,8 @@ public class OrderServiceImpl implements OrderService{
         int discountPrice = discountPolicy.discount(member, itemPrice);
         return new Order(memberId,itemName,itemPrice,discountPrice);
 
+    }
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
 }
