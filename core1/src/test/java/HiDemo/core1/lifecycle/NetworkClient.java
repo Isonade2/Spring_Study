@@ -5,7 +5,7 @@ import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-public class NetworkClient  {
+public class NetworkClient{
     private String url;
 
     public NetworkClient() {
@@ -43,4 +43,6 @@ public class NetworkClient  {
         System.out.println("NetworkClient.close");
         disconnect();
     }
+
+
 }
