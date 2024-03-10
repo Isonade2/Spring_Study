@@ -8,11 +8,13 @@ import jpabook.jpashop.repository.MemberRepository;
 import jpabook.jpashop.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class OrderService {
     private final OrderRepository orderRepository;
     private final MemberRepository memberRepository;
@@ -40,6 +42,6 @@ public class OrderService {
     }
 
     public List<Order> findOrders(OrderSearch orderSearch){
-        return
+        return orderRepository.findAllByString(orderSearch);
     }
 }
