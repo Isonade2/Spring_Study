@@ -3,34 +3,18 @@ package hellojpa;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-@Entity(name = "Member")
-public class Member {
+@Entity
+public class Product {
     @Id @GeneratedValue
     private Long id;
 
-    @Column(name = "USERNAME")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(insertable = false, updatable = false, name = "TEAM_ID")
-    private Team team;
-
-    @OneToOne
-    @JoinColumn(name = "LOCKER_ID")
-    private Locker locker;
-
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "product")
     private List<MemberProduct> memberProducts = new ArrayList<>();
-
-
-    public Member() {
-    }
 
     public Long getId() {
         return id;

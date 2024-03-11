@@ -9,12 +9,14 @@ public class JpaMain {
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
         EntityManager em = emf.createEntityManager();
+
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
         try{
-            Order order = em.find(Order.class, 1L);
-            order.
+            Order order = new Order();
+
+
 
             tx.commit();
 
