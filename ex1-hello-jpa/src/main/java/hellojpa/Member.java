@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity(name = "Member")
-public class Member {
+public class Member extends BaseEntity {
     @Id @GeneratedValue
     private Long id;
 
@@ -21,12 +21,10 @@ public class Member {
     @JoinColumn(insertable = false, updatable = false, name = "TEAM_ID")
     private Team team;
 
-    @OneToOne
-    @JoinColumn(name = "LOCKER_ID")
-    private Locker locker;
 
     @OneToMany(mappedBy = "member")
     private List<MemberProduct> memberProducts = new ArrayList<>();
+
 
 
     public Member() {
@@ -34,6 +32,22 @@ public class Member {
 
     public Long getId() {
         return id;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public List<MemberProduct> getMemberProducts() {
+        return memberProducts;
+    }
+
+    public void setMemberProducts(List<MemberProduct> memberProducts) {
+        this.memberProducts = memberProducts;
     }
 
     public void setId(Long id) {
