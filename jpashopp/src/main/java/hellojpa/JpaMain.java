@@ -1,8 +1,6 @@
 package hellojpa;
 
-import hellojpa.domain.Book;
-import hellojpa.domain.Item;
-import hellojpa.domain.Order;
+import hellojpa.domain.*;
 import jakarta.persistence.*;
 
 public class JpaMain {
@@ -16,12 +14,10 @@ public class JpaMain {
         tx.begin();
 
         try{
-            Book book = new Book();
-            book.setAuthor("martin");
-            book.setIsbn("13213");
-            book.setName("히히");
-            book.setPrice(1000);
-            em.persist(book);
+            Member member = new Member();
+            member.setAddress(new Address("city","street","zipcode"));
+            em.persist(member);
+
 
 
             tx.commit();

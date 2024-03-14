@@ -23,10 +23,13 @@ public class Member{
     @JoinColumn(name = "MEMBER_ID"))
     @Column(name = "FOOD_NAME")
     private Set<String> favoriteFoods = new HashSet<>();
-    @ElementCollection
-    @CollectionTable(name = "ADDRESS", joinColumns =
-    @JoinColumn(name = "MEMBER_ID"))
-    private List<Address> addressHistory = new ArrayList<>();
+
+//    @ElementCollection
+//    @CollectionTable(name = "ADDRESS", joinColumns =
+//    @JoinColumn(name = "MEMBER_ID"))
+//    private List<Address> addressHistory = new ArrayList<>();
+
+
 
 
     @ManyToOne
@@ -54,13 +57,6 @@ public class Member{
         this.favoriteFoods = favoriteFoods;
     }
 
-    public List<Address> getAddressHistory() {
-        return addressHistory;
-    }
-
-    public void setAddressHistory(List<Address> addressHistory) {
-        this.addressHistory = addressHistory;
-    }
 
     public void setHomeAddress(Address homeAddress) {
         this.homeAddress = homeAddress;

@@ -23,14 +23,20 @@ public class JpaMain {
             Member member = new Member();
             member.setHomeAddress(new Address("city1","street","10000"));
 
-            member.getFavoriteFoods().add("치킨");
-            member.getFavoriteFoods().add("족발");
-            member.getFavoriteFoods().add("피자");
+            AddressEntity addressEntity = new AddressEntity("old1","b","c");
+            addressEntity.setMember(member);
+            em.persist(addressEntity);
 
-            member.getAddressHistory().add(new Address("old1","street","10000"));
-            member.getAddressHistory().add(new Address("old2","street","10000"));
+            AddressEntity addressEntity2 = new AddressEntity("old2","b","c");
+            addressEntity2.setMember(member);
+            em.persist(addressEntity2);
 
             em.persist(member);
+
+
+
+            em.flush();
+            em.clear();
 
             tx.commit();
         } catch (Exception e){
