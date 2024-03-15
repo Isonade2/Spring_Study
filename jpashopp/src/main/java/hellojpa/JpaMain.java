@@ -3,6 +3,8 @@ package hellojpa;
 import hellojpa.domain.*;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 public class JpaMain {
 
     public static void main(String[] args) {
@@ -14,9 +16,6 @@ public class JpaMain {
         tx.begin();
 
         try{
-            Member member = new Member();
-            member.setAddress(new Address("city","street","zipcode"));
-            em.persist(member);
 
 
 

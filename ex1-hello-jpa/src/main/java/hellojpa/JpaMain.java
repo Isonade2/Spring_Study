@@ -18,20 +18,20 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Address address = new Address("city", "street","zipcode");
+            Member member1 = new Member();
+            member1.setName("kim");
+            em.persist(member1);
 
-            Member member = new Member();
-            member.setHomeAddress(new Address("city1","street","10000"));
+            em.flush();
+            em.clear();
 
-            AddressEntity addressEntity = new AddressEntity("old1","b","c");
-            addressEntity.setMember(member);
-            em.persist(addressEntity);
 
-            AddressEntity addressEntity2 = new AddressEntity("old2","b","c");
-            addressEntity2.setMember(member);
-            em.persist(addressEntity2);
+            List<Member> result = em.createQuery("select m from Member m where m.name like '%kim'", Member.class)
+                    .getResultList();
+            for (Member member : result) {
+                System.out.println("member = " + member);
+            }
 
-            em.persist(member);
 
 
 
