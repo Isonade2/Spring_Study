@@ -5,11 +5,11 @@ import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderStatus;
-import jpabook.jpashop.domain.exception.NotEnoughStockException;
+import jpabook.jpashop.exception.NotEnoughStockException;
 import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.repository.ItemRepository;
 import jpabook.jpashop.repository.OrderRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,6 +29,10 @@ public class OrderServiceTest {
     private OrderService orderService;
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private ItemService itemService;
+    @Autowired
+    private ItemRepository itemRepository;
     @Test
     @Rollback(value = false)
     public void 상품주문() throws Exception{
@@ -100,5 +104,18 @@ public class OrderServiceTest {
         member.setAddress(new Address("서울","강가","123-123"));
         em.persist(member);
         return member;
+    }
+
+
+    @Test
+    public void test1(){
+        Book book = new Book();
+        book.setName("1");
+        book.setIsbn("2");
+        book.setAuthor("3");
+        book.setPrice(1000);
+        book.setStockQuantity(10);
+
+        itemService.saveItem(book);
     }
 }
