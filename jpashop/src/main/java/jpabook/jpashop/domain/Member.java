@@ -19,6 +19,7 @@ public class Member {
 
     @NotEmpty
     private String name;
+
     @Embedded
     private Address address;
 
