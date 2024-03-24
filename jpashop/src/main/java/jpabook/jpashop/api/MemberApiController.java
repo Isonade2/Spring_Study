@@ -33,7 +33,9 @@ public class MemberApiController {
         List<MemberDto> collect = findMembers.stream().
                 map(m -> new MemberDto(m.getName()))
                 .collect(Collectors.toList());
-        System.out.println(collect);
+        for (MemberDto memberDto : collect) {
+            System.out.println(memberDto.getName());
+        }
         return new Result(collect.size(), collect);
 
 
@@ -88,9 +90,6 @@ public class MemberApiController {
         private Long id;
         private String name;
     }
-
-
-
 
     @Data
     public static class CreateMemberRequest{
