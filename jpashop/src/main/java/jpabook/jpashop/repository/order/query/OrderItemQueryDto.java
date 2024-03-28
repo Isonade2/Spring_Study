@@ -3,8 +3,10 @@ package jpabook.jpashop.repository.order.query;
 
 import jdk.jfr.DataAmount;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(of = "order")
 public class OrderItemQueryDto {
     private Long orderId;
     private String itemName;
