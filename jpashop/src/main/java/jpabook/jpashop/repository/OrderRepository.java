@@ -7,6 +7,7 @@ import jakarta.persistence.criteria.*;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.repository.order.simplequery.OrderSimpleQueryDto;
+import jpabook.jpashop.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
@@ -86,6 +87,11 @@ public class OrderRepository {
 
         return query.getResultList();
     }
+
+    public List<Order> findAll(OrderSearch orderSearch){
+
+    }
+
 
     public List<Order> findAllWithMemberDelivery() {
         return em.createQuery(
