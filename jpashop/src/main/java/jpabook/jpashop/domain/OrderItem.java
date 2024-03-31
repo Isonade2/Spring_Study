@@ -39,6 +39,10 @@ public class OrderItem {
         return orderItem;
     }
 
+    public void changeOrder(Order order) {
+        this.order = order;
+
+    }
     public void cancel() {
         getItem().addStock(count);
     }
